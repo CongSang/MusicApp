@@ -67,8 +67,8 @@ const app = {
             image: './assets/img/song5.jpg'
         },
         {
-            name: 'She Neva Knows',
-            singer: 'JustaTee',
+            name: 'Gác Lại Âu Lo',
+            singer: 'Da LAB, Miu Lê',
             path: './assets/music/song6.mp3',
             image: './assets/img/song6.jpg'
         },
@@ -101,6 +101,12 @@ const app = {
             singer: 'Châu Thâm (Zhou Shen)',
             path: './assets/music/song11.mp3',
             image: './assets/img/song11.jpg'
+        },
+        {
+            name: 'Cửu Môn Hồi Ức',
+            singer: 'Đẳng Thậm Ma Quân',
+            path: './assets/music/song12.mp3',
+            image: './assets/img/song12.jpg'
         },
     ],
     setConfig: function(key, value) {
@@ -251,7 +257,7 @@ const app = {
 
         playList.onclick = function(e) {
             const songNotActive = e.target.closest('.song:not(.active)')
-            if(songNotActive || e.target.closest('.option')) { 
+            if(songNotActive && !e.target.closest('.option')) { 
                 if(songNotActive) {
                     _this.currentIndex = Number(songNotActive.dataset.index)
                     let activeSong = $('.song.active')
@@ -261,10 +267,10 @@ const app = {
                     _this.loadCurrentSong()
                     audio.play()
                 }
+            }
 
-                // if(e.target.closest('.option')) {
-
-                // }
+            if(e.target.closest('.option')) {
+                
             }
         }
     },
@@ -282,7 +288,7 @@ const app = {
                     block: 'nearest'
                 });
             }
-        }, 400)
+        }, 300)
     },
     loadCurrentSong: function () {
         heading.textContent = this.currentSong.name
